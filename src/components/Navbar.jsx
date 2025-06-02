@@ -55,7 +55,7 @@ function Navbar() {
             Home
           </Link>
           <Link
-            to="/book"
+            to="/LandingPage"
             className="block mt-3 md:mt-0 text-lg font-medium hover:text-gray-200 transition"
           >
             Book
