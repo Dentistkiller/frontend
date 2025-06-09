@@ -103,11 +103,6 @@ export default function LandingPage() {
           Get in Touch
         </Link>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-6 text-center">
-        <p>&copy; {new Date().getFullYear()} Globe Trekkers. All rights reserved.</p>
-      </footer>
     </div>
   );
 }
