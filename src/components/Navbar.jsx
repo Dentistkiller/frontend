@@ -8,8 +8,8 @@ function Navbar() {
     <nav className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Brand */}
-        <Link to="/" className="text-2xl font-bold tracking-wide">
-          🌍 Cultural Travel Guide
+        <Link to="/" className="text-xl font-bold tracking-wide">
+          Travellers
         </Link>
 
         {/* Hamburger button (mobile) */}
@@ -49,28 +49,22 @@ function Navbar() {
           } w-full md:flex md:items-center md:space-x-6`}
         >
           <Link
-            to="/home"
+            to="/countries"
+            className="block mt-3 md:mt-0 text-lg font-medium hover:text-gray-200 transition"
+          >
+            Countries
+          </Link>
+          <Link
+            to="/"
             className="block mt-3 md:mt-0 text-lg font-medium hover:text-gray-200 transition"
           >
             Home
-          </Link>
-          <Link
-            to="/LandingPage"
-            className="block mt-3 md:mt-0 text-lg font-medium hover:text-gray-200 transition"
-          >
-            Landing Page
           </Link>
           <Link
             to="/tours"
             className="block mt-3 md:mt-0 text-lg font-medium hover:text-gray-200 transition"
           >
             Tours
-          </Link>
-          <Link
-            to="/contact"
-            className="block mt-3 md:mt-0 text-lg font-medium hover:text-gray-200 transition"
-          >
-            Contact
           </Link>
         </div>
       </div>

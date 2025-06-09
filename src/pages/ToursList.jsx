@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ChatWidget from "./components/ChatWidget";
 
 // 👇 Import local JSON files directly
 import toursData from "../data/tours.json";
@@ -54,6 +55,7 @@ export default function ToursList() {
                     Product Line: {tour.product_line || "N/A"}
                   </p>
                 </div>
+              
               </Link>
             );
           })}
