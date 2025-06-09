@@ -58,13 +58,13 @@ function Navbar() {
             to="/LandingPage"
             className="block mt-3 md:mt-0 text-lg font-medium hover:text-gray-200 transition"
           >
-            Book
+            Landing Page
           </Link>
           <Link
-            to="/about"
+            to="/tours"
             className="block mt-3 md:mt-0 text-lg font-medium hover:text-gray-200 transition"
           >
-            About
+            Tours
           </Link>
           <Link
             to="/contact"

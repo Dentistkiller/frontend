@@ -4,6 +4,9 @@ import Home from "./pages/Home";
 import CountryPage from "./pages/CountryPage";
 import LandingPage from "./pages/LandingPage";
 import Footer from "./components/Footer";
+import ToursList from './pages/ToursList';
+import TourDetails from './pages/TourDetails';
+import Chatbot from "./pages/Chatbot";
 
 function App() {
   return (
@@ -14,6 +17,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/country/:id" element={<CountryPage />} />
           <Route path="/LandingPage" element={<LandingPage />} />
+        <Route path="/tours" element={<ToursList />} />
+        <Route path="/tours/:id" element={<TourDetails />} />
+        <Route path="chatbot" element={<Chatbot />} />
         </Routes>
       </div>
       <Footer />
