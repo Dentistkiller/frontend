@@ -1,70 +1,238 @@
-# Getting Started with Create React App
+# Travel Explorer Website with AI Chatbot 🌍🤖
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Created by:** Yusuf Paruk  
+**Date:** June 2025  
 
-## Available Scripts
+## 📋 Table of Contents
 
-In the project directory, you can run:
+- [Introduction](#introduction)
+- [Project Objectives](#project-objectives)
+- [System Architecture](#system-architecture)
+- [Data Sources](#data-sources)
+- [Backend Implementation](#backend-implementation)
+- [Frontend Implementation](#frontend-implementation)
+- [AI Chatbot Integration](#ai-chatbot-integration)
+- [Containerization and Deployment](#containerization-and-deployment)
+- [Version Control](#version-control)
+- [Challenges and Solutions](#challenges-and-solutions)
+- [Future Work](#future-work)
+- [Conclusion](#conclusion)
+- [References](#references)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Introduction
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project is a full-stack **Travel Explorer Website** that allows users to explore countries, tours, and UNESCO sites in an interactive and intelligent manner. The platform integrates multiple APIs and an AI chatbot to enhance user engagement.
 
-### `npm test`
+### Key Features
+- Country information display  
+- Tour information display  
+- UNESCO sites per country  
+- AI-powered travel assistant chatbot  
+- Modern responsive design  
+- Fully containerized deployment on Render  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🎯 Project Objectives
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Build an end-to-end travel website using modern web technologies  
+- Integrate third-party APIs (G Adventures API and UNESCO API)  
+- Implement an AI chatbot using Cohere API  
+- Ensure the system is containerized using Docker  
+- Deploy the solution using **Render.com**  
+- Maintain codebase with **GitHub**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🏛️ System Architecture
 
-### `npm run eject`
+```plaintext
+┌────────────────────────────┐
+│        User (Browser)      │
+└────────────┬───────────────┘
+             │ React.js Frontend
+┌────────────┴───────────────┐
+│        Node.js Backend     │
+│ - API aggregator           │
+│ - Cohere AI Chat API proxy │
+└────────────┬───────────────┘
+             │ REST APIs
+ ┌───────────┴────────────┐
+ │  G Adventures API      │
+ │  UNESCO API            │
+ │  Cohere Chat API       │
+ └────────────────────────┘
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🌍 Data Sources
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### G Adventures API
+- Source for **tour information**  
+- Data pulled: `Tour name`, `Itinerary`, `Images`, `Start/End Dates`, `Country`, `Description`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### UNESCO API
+- Source for **UNESCO site information**  
+- Data pulled: `Site name`, `Location`, `Coordinates`, `Description`, `Country`
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🖥️ Backend Implementation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Stack
+- **Node.js** (v20)  
+- **Express.js** for REST API routing  
+- Axios for calling external APIs  
+- Dotenv for environment management  
 
-### Code Splitting
+### API Aggregation Logic
+The backend exposes the following endpoints:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+GET /api/tours → Returns list of tours  
+GET /api/countries → Returns country list  
+GET /api/unesco → Returns UNESCO sites  
+GET /api/chat → Proxy endpoint to Cohere chat API  
+```
 
-### Analyzing the Bundle Size
+### Example Endpoint
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```javascript
+app.get('/api/tours', async (req, res) => {
+  const response = await axios.get(GADVENTURES_API_URL, { headers: {...} });
+  res.json(response.data);
+});
+```
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🖼️ Frontend Implementation
 
-### Advanced Configuration
+### Stack
+- **React.js (v18)**  
+- **React Router** for navigation  
+- **Tailwind CSS** for responsive design  
+- Fetch API to call backend endpoints  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Key Screens
+- Home Page  
+- Country List → Country Details → UNESCO Sites  
+- Tour List → Tour Details  
+- AI Chatbot floating button  
 
-### Deployment
+### Chatbot Integration (Frontend)
+- Simple chat interface connected to backend `/api/chat` endpoint  
+- Streaming chat responses with loading indicators  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 🤖 AI Chatbot Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### API
+- **Cohere Chat API**  
+- Model: `Command R+` fine-tuned version  
+- Mode: Streaming chat  
+
+### Chatbot Use Cases
+- "What tours are available in Kenya?"  
+- "Tell me about UNESCO sites in India."  
+- "Recommend a tour for adventure travel."  
+
+### Implementation
+
+```javascript
+const stream = await cohere.chatStream({
+    model: 'command-r',
+    message: userMessage
+});
+```
+
+---
+
+## 🐳 Containerization and Deployment
+
+### Docker
+
+#### Frontend Dockerfile
+
+```dockerfile
+FROM node:20
+WORKDIR /app
+COPY ./frontend .
+RUN npm install
+RUN npm run build
+CMD ["npx", "serve", "-s", "build"]
+```
+
+#### Backend Dockerfile
+
+```dockerfile
+FROM node:20
+WORKDIR /app
+COPY ./backend .
+RUN npm install
+CMD ["node", "server.js"]
+```
+
+### Render Deployment
+- Backend and frontend deployed as separate **Web Services** on Render  
+- GitHub integration for continuous deployment  
+- Automatic build and deploy on `main` branch push  
+
+---
+
+## 🔁 Version Control
+
+- Git used for version control  
+- GitHub repository hosted here: [GitHub link]  
+- Branch strategy: `main` for production, `dev` for development  
+
+---
+
+## 🛠️ Challenges and Solutions
+
+| Challenge | Solution |
+|-----------|----------|
+| Inconsistent data formats between APIs | Implemented data normalization functions in backend |
+| Rate limits on G Adventures API | Added caching layer using memory-cache |
+| Maintaining chatbot context | Leveraged Cohere chat session features and history tracking |
+| Deployment configuration on Render | Fine-tuned Render.yaml with correct health checks and environment variables |
+
+---
+
+## 🚧 Future Work
+
+- Add user authentication (login, favorites)  
+- Allow user reviews and ratings for tours  
+- Improve chatbot memory and personalization  
+- Optimize performance with caching and indexing  
+- Add offline-first support for mobile use  
+
+---
+
+## ✅ Conclusion
+
+This project demonstrates a full-stack, AI-enhanced travel website integrating live external data and an AI chatbot. The system was fully containerized and deployed successfully on Render, providing a scalable and maintainable architecture.
+
+It illustrates the power of combining:
+- External APIs (G Adventures + UNESCO)  
+- AI (Cohere)  
+- Modern Web Stack (React + Node.js)  
+- Cloud deployment (Docker + Render)
+
+---
+
+## 📚 References
+
+- G Adventures API Documentation  
+- UNESCO API Dataset  
+- Cohere API Documentation  
+- React.js Documentation  
+- Node.js Documentation  
+- Docker Documentation  
+- Render Deployment Guides  
+
+---
