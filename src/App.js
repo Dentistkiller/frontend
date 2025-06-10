@@ -8,6 +8,7 @@ import ToursList from './pages/ToursList';
 import TourDetails from './pages/TourDetails';
 import Chatbot from "./pages/Chatbot";
 import ChatWidget from "./components/ChatWidget";
+import BookNow from "./pages/BookNow";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/tours" element={<ToursList />} />
         <Route path="/tours/:id" element={<TourDetails />} />
         <Route path="chatbot" element={<Chatbot />} />
+        <Route path="/book/:id" element={<BookNow />} />
         </Routes>
       </div>
       <ChatWidget />

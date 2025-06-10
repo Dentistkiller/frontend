@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import worldMap from "../data/worldmap.jpg";
+
 
 export default function LandingPage() {
   return (
@@ -96,17 +98,27 @@ export default function LandingPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="bg-primary py-12 text-center text-primary-content">
-        <h2 className="text-4xl font-bold mb-6">
-          Ready to Start Your Adventure?
-        </h2>
-        <Link
-          to="/contact"
-          className="btn btn-secondary text-lg px-8 py-3"
-        >
-          Get in Touch
-        </Link>
-      </section>
+      <section
+  className="relative py-12 text-center text-primary-content"
+  style={{
+    backgroundImage: `url(${worldMap})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black bg-opacity-60" />
+
+  {/* Content */}
+  <div className="relative z-10">
+    <h2 className="text-4xl font-bold mb-6">Ready to Start Your Adventure?</h2>
+    <Link to="/tours" className="btn btn-secondary text-lg px-8 py-3">
+      Discover Tours
+    </Link>
+  </div>
+</section>
+
+
     </div>
   );
 }

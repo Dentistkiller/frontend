@@ -9,7 +9,7 @@ function Navbar() {
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Brand */}
         <Link to="/" className="text-2xl font-extrabold tracking-wide">
-          Travellers
+          Y-Travels
         </Link>
 
         {/* Hamburger button (mobile) */}
