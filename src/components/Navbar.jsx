@@ -5,10 +5,10 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg">
+    <nav className="navbar bg-neutral bg-neutral-900 text-neutral-content shadow-lg">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Brand */}
-        <Link to="/" className="text-xl font-bold tracking-wide">
+        <Link to="/" className="text-2xl font-extrabold tracking-wide">
           Travellers
         </Link>
 
@@ -19,7 +19,7 @@ function Navbar() {
           aria-label="Toggle navigation"
         >
           <svg
-            className="w-6 h-6"
+            className="w-7 h-7"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -46,23 +46,23 @@ function Navbar() {
         <div
           className={`${
             isOpen ? "block" : "hidden"
-          } w-full md:flex md:items-center md:space-x-6`}
+          } md:flex md:items-center md:space-x-8 text-base font-medium`}
         >
           <Link
             to="/countries"
-            className="block mt-3 md:mt-0 text-lg font-medium hover:text-gray-200 transition"
+            className="block py-2 md:py-0 hover:text-primary transition"
           >
             Countries
           </Link>
           <Link
             to="/"
-            className="block mt-3 md:mt-0 text-lg font-medium hover:text-gray-200 transition"
+            className="block py-2 md:py-0 hover:text-primary transition"
           >
             Home
           </Link>
           <Link
             to="/tours"
-            className="block mt-3 md:mt-0 text-lg font-medium hover:text-gray-200 transition"
+            className="block py-2 md:py-0 hover:text-primary transition"
           >
             Tours
           </Link>

@@ -35,32 +35,25 @@ export default function ToursList() {
                 tour.name || "travel"
               )}`;
 
-            return (
-              <Link
-                key={tour.id}
-                to={`/tours/${tour.id}`}
-                className="bg-white rounded-lg shadow hover:shadow-xl overflow-hidden transition"
-              >
-                <img
-                  src={imageUrl}
-                  alt={tour.name}
-                  className="h-48 w-full object-cover"
-                  onError={(e) => {
-                    e.target.src = "https://source.unsplash.com/400x300/?travel";
-                  }}
-                />
-                <div className="p-4">
-                  <h2 className="text-xl font-semibold mb-1">{tour.name}</h2>
-                  <p className="text-sm text-gray-600">
-                    Product Line: {tour.product_line || "N/A"}
-                  </p>
-                </div>
-              
-              </Link>
-            );
-          })}
-        </div>
-      )}
-    </div>
-  );
-}
+              return (
+                <Link key={tour.id} to={`/tours/${tour.id}`}>
+                  <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition">
+                    <figure>
+                      <img src={imageUrl} alt={tour.name} className="h-48 w-full object-cover" />
+                    </figure>
+                    <div className="card-body">
+                      <h2 className="card-title">{tour.name}</h2>
+                      <p>Product Line: {tour.product_line || "N/A"}</p>
+                      <div className="card-actions justify-end">
+                        <button className="btn btn-primary">View Details</button>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    );
+  }

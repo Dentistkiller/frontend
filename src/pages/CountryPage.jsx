@@ -1,4 +1,3 @@
-// Updated CountryPage.jsx (Modern Look)
 import { useParams, Link } from "react-router-dom";
 import restCountries from "../data/rest_countries.json";
 import unescoData from "../data/unesco_sites.json";
@@ -19,7 +18,7 @@ function CountryPage() {
   }));
 
   const country = countries.find((c) => c.id === id);
-  if (!country) return <p className="text-center text-xl mt-8">Country not found.</p>;
+  if (!country) return <p className="text-center text-xl mt-8 text-neutral-content">Country not found.</p>;
 
   const unescoSitesRaw = unescoData.query.row;
   const matchingSites = unescoSitesRaw
@@ -37,24 +36,26 @@ function CountryPage() {
     }));
 
   return (
-    <div className="bg-gradient-to-b from-indigo-50 via-white to-white min-h-screen">
+    <div className="bg-neutral-900 text-neutral-content min-h-screen">
+      {/* Hero Section */}
       <div
         className="relative h-[60vh] bg-cover bg-center rounded-b-3xl shadow-md"
         style={{ backgroundImage: `url(${country.flag})` }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center">
+        <div className="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center">
           <h1 className="text-white text-6xl font-extrabold drop-shadow-lg">{country.name}</h1>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-10">
         <div className="mb-6">
-          <Link to="/" className="text-blue-600 hover:underline text-sm">← Back to Home</Link>
+          <Link to="/" className="text-primary hover:underline text-sm">← Back to Home</Link>
         </div>
 
+        {/* About Country */}
         <div className="grid md:grid-cols-2 gap-12">
           <div className="text-lg space-y-4">
-            <h2 className="text-4xl font-bold text-gray-800">🌍 About {country.name}</h2>
+            <h2 className="text-4xl font-bold mb-4">🌍 About {country.name}</h2>
             <ul className="space-y-2">
               <li><strong>Capital:</strong> {country.capital}</li>
               <li><strong>Region:</strong> {country.region}</li>
@@ -64,13 +65,15 @@ function CountryPage() {
             </ul>
           </div>
 
-          <div className="rounded-2xl overflow-hidden shadow-xl">
+          {/* Country Flag */}
+          <div className="rounded-2xl overflow-hidden border-4 border-neutral-700 shadow-xl">
             <img src={country.flag} alt={country.name} className="w-full h-full object-cover" />
           </div>
         </div>
 
+        {/* UNESCO Sites */}
         <div className="mt-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">🏛 UNESCO World Heritage Sites</h2>
+          <h2 className="text-4xl font-bold mb-6">🏛 UNESCO World Heritage Sites</h2>
           {matchingSites.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {matchingSites.map((site, idx) => (
@@ -78,7 +81,7 @@ function CountryPage() {
               ))}
             </div>
           ) : (
-            <p className="text-gray-600">No UNESCO sites found for this country.</p>
+            <p className="text-gray-400">No UNESCO sites found for this country.</p>
           )}
         </div>
       </div>
