@@ -40,10 +40,10 @@ export default function ChatWidget() {
 
       {/* Chat popup */}
       {isOpen && (
-        <div className="fixed bottom-20 right-4 w-80 h-96 bg-neutral-900 border border-base-200 rounded-lg shadow-lg flex flex-col">
+        <div className="fixed bottom-20 right-4 w-80 h-96 bg-neutral-900/70 backdrop-blur-md border border-base-200 rounded-lg shadow-lg flex flex-col">
           {/* Header */}
           <div className="flex justify-between items-center p-2 border-b border-base-200 text-neutral-content">
-            <h2 className="font-semibold">AI Chatbot</h2>
+            <h2 className="font-semibold">Y-Travels A(i)gent</h2>
             <button
               onClick={() => setIsOpen(false)}
               className="text-gray-400 hover:text-gray-200"
