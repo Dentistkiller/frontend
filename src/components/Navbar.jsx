@@ -66,6 +66,10 @@ function Navbar() {
           >
             Tours
           </Link>
+          <Link to="/itinerary-generator" className="btn btn-secondary">
+  Generate Itinerary
+</Link>
+
         </div>
       </div>
     </nav>

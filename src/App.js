@@ -9,6 +9,7 @@ import TourDetails from './pages/TourDetails';
 import Chatbot from "./pages/Chatbot";
 import ChatWidget from "./components/ChatWidget";
 import BookNow from "./pages/BookNow";
+import ItineraryGenerator from "./pages/ItineraryGenerator";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/tours/:id" element={<TourDetails />} />
         <Route path="chatbot" element={<Chatbot />} />
         <Route path="/book/:id" element={<BookNow />} />
+        <Route path="/itinerary-generator" element={<ItineraryGenerator />} />
         </Routes>
       </div>
       <ChatWidget />
