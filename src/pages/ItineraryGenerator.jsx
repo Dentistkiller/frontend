@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 export default function ItineraryGenerator() {
   const [userInput, setUserInput] = useState("");
@@ -62,12 +63,14 @@ export default function ItineraryGenerator() {
         <p className="text-center text-red-500 mb-4">{error}</p>
       )}
 
-      {itinerary && (
-        <div className="bg-base-100 shadow-xl p-6 rounded-lg whitespace-pre-wrap">
-          <h2 className="text-2xl font-bold mb-4 text-center">Generated Itinerary</h2>
-          <p>{itinerary}</p>
-        </div>
-      )}
+{itinerary && (
+  <div className="bg-base-100 shadow-xl p-6 rounded-lg">
+    <h2 className="text-2xl font-bold mb-4 text-center">Generated Itinerary</h2>
+    <div className="prose prose-invert max-w-none">
+      <ReactMarkdown>{itinerary}</ReactMarkdown>
+    </div>
+  </div>
+)}
     </div>
   );
 }
