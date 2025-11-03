@@ -15,7 +15,7 @@ export default function Chatbot() {
     setInput("");
 
     try {
-      const response = await fetch("http://localhost:3001/api/v1/chat", {
+      const response = await fetch("https://cohere-serverr.onrender.com/generatet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
